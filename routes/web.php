@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use League\Uri\Http;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\User\UserController as UserHomeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,4 +18,4 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function (){
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('home')->middleware(['auth','user']);
+Route::get('/home', [UserHomeController::class, 'index'])->name('home')->middleware(['auth','user']);

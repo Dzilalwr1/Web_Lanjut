@@ -18,7 +18,7 @@ class User
         if(!Auth::check()){
             return redirect()->route('login');
         }
-        if(Auth::user()->role === 'USER'){
+        if(strtolower(Auth::user()->role) === 'user'){
             return $next($request);
         }
         return redirect('/');
