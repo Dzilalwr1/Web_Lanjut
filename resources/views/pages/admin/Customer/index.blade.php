@@ -16,8 +16,8 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                    <a href="{{ route('admin.users.create') }}" class="btn btn-primary btn-sm btn-user">
-                    + Tambah User
+                    <a href="{{ route('admin.customers.create') }}" class="btn btn-primary btn-sm btn-user">
+                    + Tambah Customer
                     </a>
                 </div>
                 <div class="card-body">
@@ -28,7 +28,8 @@
                                     <th>No</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Roles</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
                                     <th>Tanggal dibuat</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -38,32 +39,34 @@
                                     <th>No</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Roles</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
                                     <th>Tanggal dibuat</th>
                                     <th>Aksi</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @forelse ($users as $user)
+                                @forelse ($customers as $customer)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->role }}</td>
-                                        <td>{{ $user->created_at->format('Y-m-d') }}</td>
-                                        <td><a href="{{ route('admin.users.edit', $user->id) }}">Edit</a>
-                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"
+                                        <td>{{ $customer->name }}</td>
+                                        <td>{{ $customer->email }}</td>
+                                        <td>{{ $customer->phone }}</td>
+                                        <td>{{ $customer->address }}</td>
+                                        <td>{{ $customer->created_at->format('Y-m-d') }}</td>
+                                        <td>
+                                            <a href="{{ route('admin.customers.edit', $customer->id) }}">Edit</a>
+                                            <form action="{{ route('admin.customers.destroy', $customer->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus akun ini?')">Hapus</button>
+                                                <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus customer ini?')">Hapus</button>
                                             </form>
-
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="3">No users found</td>
+                                        <td colspan="7">No customers found</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -77,3 +80,4 @@
 
     </div>
 @endsection
+

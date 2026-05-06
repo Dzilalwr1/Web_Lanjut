@@ -38,9 +38,16 @@
             <span>User</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.customers.index') }}">
+            <i class="fas fa-fw fa-user-friends"></i>
+            <span>Customer</span></a>
+    </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">
+
 
 
 </ul>
